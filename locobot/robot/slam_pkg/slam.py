@@ -42,7 +42,7 @@ class Slam(object):
         """
 
         :param robot: pyrobot robot object, only supports [habitat, locobot]
-        :param robot_name: name of the robot [habitat, locobot] 
+        :param robot_name: name of the robot [habitat, locobot]
         :param map_size: size of map to be build in cm, assumes square map
         :param resolution: resolution of map, 1 pix = resolution distance(in cm) in real world
         :param robot_rad: radius of the agent, used to explode the map
@@ -614,6 +614,7 @@ def main(args):
             p = robot.base.sim.pathfinder.get_random_navigable_point()
 
             agent_state.position = copy(p)
+            # robot sensor is at 0.6 highher than base
             agent_state.sensor_states["rgb"].position = copy(p + np.array([0.0, 0.6, 0.0]))
             agent_state.sensor_states["depth"].position = copy(p + np.array([0.0, 0.6, 0.0]))
             agent_state.sensor_states["semantic"].position = copy(p + np.array([0.0, 0.6, 0.0]))
